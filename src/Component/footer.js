@@ -2,7 +2,7 @@ import juneca from "../Picture/juneca.png"
 
 function Footer() {
     return (
-        <div className="footer d-flex flex-row justify-content-evenly ">
+        <div className="footer d-flex flex-row justify-content-evenly " style={{ fontFamily: "Quicksand" }}>
             <div className="align-self-center" >
                 <img src={juneca} style={{ width: "250px" }} alt="juneca" />
             </div>
