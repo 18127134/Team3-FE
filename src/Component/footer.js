@@ -25,9 +25,8 @@ function Footer() {
             </div>
 
             <div className="align-self-center d-flex flex-column" >
-                <img style={{ width: "100px" }} src="https://s3.cloud.cmctelecom.vn/tinhte1/2018/04/4277831_upload_2018-4-2_14-40-43.png" className="img-footer " alt="bocongthuong" />
-                <img style={{ width: "100px" }} src="https://itop.website/uploads/blog/video-example-dmca-policy-text.jpg" className="img-footer " alt="bocongthuong" />
-
+                <img style={{ width: "100px" }} src="https://www.akb.com.vn/wp-content/uploads/2020/04/dang-ky-website-voi-bo-cong-thuong-3.jpg" className="img-footer " alt="bocongthuong" />
+                <img style={{ width: "100px" }} src="https://itop.website/uploads/blog/video-example-dmca-policy-text.jpg" className="img-footer " alt="DCMA" />
             </div>
         </div>
     )

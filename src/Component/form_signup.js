@@ -48,7 +48,7 @@ function Formsignup() {
 
                 <div>
                     <button type="submit" style={{ color: "#940505", marginBlock: "10px", width: "100%", backgroundColor: "#FD7878" }}>
-                        <b>Đăng ký</b>
+                        <b>Xác Nhận</b>
                     </button>
                 </div>
 
