@@ -146,3 +146,21 @@
   border: 3px solid #ff9797;
   border-radius: 50px;
 }
+
+.content-main-homepage{
+  border: 1px solid none;
+  border-radius: 50px;
+  background-color: #fff6dc;
+  padding: 1cm;
+  height: fit-content;
+  width: 23cm;
+  margin-inline: 30px;
+}
+
+.product-main-homepage{
+  background-color: #fff6dc;
+  border: 1px solid none;
+  border-radius: 25px;
+  padding: 20px;
+  height: fit-content;
+}
