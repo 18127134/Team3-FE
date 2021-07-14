@@ -4,7 +4,7 @@ function Footer() {
     return (
         <div className="footer d-flex flex-row justify-content-evenly " style={{ fontFamily: "Quicksand" }}>
             <div className="align-self-center" >
-                <img src={juneca} style={{ width: "250px" }} alt="juneca" />
+                <p style={{ fontFamily: "allura", fontSize: "100px" }}>Juneca</p>
             </div>
             <div className="align-self-center " style={{ width: "400px" }} >
                 <p>
