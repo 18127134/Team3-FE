@@ -25,7 +25,7 @@ function Homepage() {
                         muốn mang đến cho khách hàng - những người bạn của mình.
                         <p>
                             Giữa trung tâm Sài Gòn náo nhiệt,
-                            Juneca khép mình ẩn náy trongmột không gian kín đáo, dịu dàng.
+                            Juneca khép mình ẩn náy trong một không gian kín đáo, dịu dàng.
                             Nơi sẽ ngay lập tức như đưa bạn trở về nhà, như lạc về một miền kí ức thân thương
                             của những nồi nước lá xông thơm phức đến từng ngón tay, sợi tóc. Để cảm xúc được nâng niu,
                             chiều chuộng sau một ngày dài mệt mỏi...

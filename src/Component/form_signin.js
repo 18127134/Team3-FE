@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 
 function onSubmit(event) {
     event.preventDefault();
@@ -43,7 +43,7 @@ function Formsignin() {
 
                 <div className="d-flex flex-column" style={{ color: "#940505" }} >
                     <p className="text-center">
-                        Bạn chưa có tài khoản? Đăng ký tài khoản <a href="/#">tại đây!</a>
+                        Bạn chưa có tài khoản? Đăng ký tài khoản <Link to="/signup">tại đây!</Link>
                     </p>
                 </div>
 

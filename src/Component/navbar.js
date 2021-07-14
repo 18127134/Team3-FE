@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
@@ -13,7 +14,9 @@ function Navbar() {
                 </div>
 
                 <div className="">
-                    <button type="button" className="btn-sm" >Trang chủ <i className="bi bi-house-door-fill" /></button>
+                    <Link to="/">
+                        <button type="button" className="btn-sm" >Trang chủ <i className="bi bi-house-door-fill" /></button>
+                    </Link>
                 </div>
                 <div className="">
                     <button type="button" className="btn-sm" >Tin tức  <i className="bi bi-newspaper" /></button>
@@ -22,10 +25,14 @@ function Navbar() {
                     <button type="button" className="btn-sm">Liên hệ <i className="bi bi-telephone-fill" /></button>
                 </div>
                 <div className="">
-                    <button type="button" className="btn-sm">Đăng nhập <i className="bi bi-person-check-fill" /></button>
+                    <Link to="/signin">
+                        <button type="button" className="btn-sm">Đăng nhập <i className="bi bi-person-check-fill" /></button>
+                    </Link>
                 </div>
                 <div className="">
-                    <button type="button" className="btn-sm">Đăng ký <i className="bi bi-person-plus-fill" /></button>
+                    <Link to="/signup">
+                        <button type="button" className="btn-sm">Đăng ký <i className="bi bi-person-plus-fill" /></button>
+                    </Link>
                 </div>
 
             </div>

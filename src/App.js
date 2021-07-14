@@ -6,18 +6,32 @@ import Footer from './Component/footer';
 import Formsignin from './Component/form_signin';
 import Homepage from './Component/homepage';
 import React from 'react';
-import { Route, Router } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <Router>
       <Header />
       <Navbar />
+      <Switch>
+        <Route path="/" exact>
+          <Homepage />
+        </Route>
+        <Route path="/signin">
+          <Formsignin />
+        </Route>
+        <Route path="/signup">
+          <Formsignup />
+        </Route>
+      </Switch>
 
-      <Homepage />
 
       <Footer />
-    </div>
+    </Router>
 
   );
 }
