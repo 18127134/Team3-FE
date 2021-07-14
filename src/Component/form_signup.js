@@ -54,7 +54,7 @@ function Formsignup() {
                     </button>
                 </div>
 
-                <div className="d-flex flex-column" style={{ color: "#940505" }} >
+                <div className="d-flex flex-column" style={{ fontSize: "15px", color: "#940505" }} >
                     <p>
                         Bạn có tài khoản? Đăng nhập <Link to="/signin">tại đây!</Link>
                     </p>
