@@ -6,6 +6,8 @@ import Footer from './Component/footer';
 import Formsignin from './Component/form_signin';
 import Homepage from './Component/homepage';
 import React from 'react';
+import Choosedate from './Component/booking/Choose Date/choose_date';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +19,7 @@ function App() {
     <Router>
       <Header />
       <Navbar />
-      <Switch>
+      {/* <Switch>
         <Route path="/" exact>
           <Homepage />
         </Route>
@@ -27,7 +29,8 @@ function App() {
         <Route path="/signup">
           <Formsignup />
         </Route>
-      </Switch>
+      </Switch> */}
+      <Choosedate />
 
 
       <Footer />
@@ -37,3 +40,4 @@ function App() {
 }
 
 export default App;
+
