@@ -1,3 +1,7 @@
+.remove-all-styles {
+  all: revert;
+}
+
 .App {
   text-align: center;
 }
@@ -39,13 +43,6 @@
 
 .img-header{
   width: 100%;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .text-header{
@@ -141,7 +138,7 @@
   color: #d63636;
 }
 
-.form-signup{
+.form-sinup{
   color: #940505;
   border: 3px solid #ff9797;
   border-radius: 50px;
@@ -163,4 +160,31 @@
   border-radius: 25px;
   padding: 20px;
   height: fit-content;
+}
+
+.table {
+  margin: 0 auto 20px;
+}
+
+.today {
+  color: rgb(255, 102, 102);
+}
+
+.in-prev-month,
+.in-next-month {
+  opacity: 0.5;
+}
+
+/* Button in out */
+.buttonio{
+  color: #940505;
+  margin-block: 10px;
+  width: 100%;
+  background-color: #FD7878;
+}
+
+/* Button nav */
+.button_nav{
+  border: 1.5px solid red;
+  border-radius: 25px;
 }

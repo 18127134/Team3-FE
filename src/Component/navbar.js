@@ -15,23 +15,23 @@ function Navbar() {
 
                 <div className="">
                     <Link to="/">
-                        <button type="button" className="btn-sm" >Trang chủ <i className="bi bi-house-door-fill" /></button>
+                        <button type="button" className="btn-sm button_nav" >Trang chủ <i className="bi bi-house-door-fill" /></button>
                     </Link>
                 </div>
                 <div className="">
-                    <button type="button" className="btn-sm" >Tin tức  <i className="bi bi-newspaper" /></button>
+                    <button type="button" className="btn-sm button_nav" >Tin tức  <i className="bi bi-newspaper" /></button>
                 </div>
                 <div className="">
-                    <button type="button" className="btn-sm">Liên hệ <i className="bi bi-telephone-fill" /></button>
+                    <button type="button" className="btn-sm button_nav">Liên hệ <i className="bi bi-telephone-fill" /></button>
                 </div>
                 <div className="">
                     <Link to="/signin">
-                        <button type="button" className="btn-sm">Đăng nhập <i className="bi bi-person-check-fill" /></button>
+                        <button type="button" className="btn-sm button_nav">Đăng nhập <i className="bi bi-person-check-fill" /></button>
                     </Link>
                 </div>
                 <div className="">
                     <Link to="/signup">
-                        <button type="button" className="btn-sm">Đăng ký <i className="bi bi-person-plus-fill" /></button>
+                        <button type="button" className="btn-sm button_nav">Đăng ký <i className="bi bi-person-plus-fill" /></button>
                     </Link>
                 </div>
 

@@ -11,12 +11,6 @@ code {
     monospace;
 }
 
-button{
-  border: 1.5px solid red;
-  padding: 10px;
-  border-radius: 25px;
-}
-
 input{
   border: 1.5px solid red;
   padding: 10px;
@@ -26,3 +20,4 @@ input{
 h1{
   font-weight: bolder;
 }
+

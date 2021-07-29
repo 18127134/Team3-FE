@@ -49,7 +49,7 @@ function Formsignup() {
                 </div>
 
                 <div>
-                    <button type="submit" style={{ color: "#940505", marginBlock: "10px", width: "100%", backgroundColor: "#FD7878" }}>
+                    <button type="submit buttonio" >
                         <b>Đăng ký</b>
                     </button>
                 </div>

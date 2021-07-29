@@ -36,7 +36,7 @@ function Formsignin() {
                 </div>
 
                 <div>
-                    <button type="submit" style={{ color: "#940505", marginBlock: "10px", width: "100%", backgroundColor: "#FD7878" }}>
+                    <button type="submit" className="buttonio">
                         <b>Đăng Nhập</b>
                     </button>
                 </div>
