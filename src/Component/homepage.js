@@ -5,7 +5,7 @@ import Topseller from "./topseller";
 function Homepage() {
     return (
         <div className="d-flex"  >
-            <div>
+            <div className="row align-items-end">
                 <img src={nail}
                     alt="nail" />
             </div>
