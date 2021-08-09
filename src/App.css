@@ -154,12 +154,13 @@
   margin-inline: 30px;
 }
 
-.product-main-homepage{
+.product-top-seller{
   background-color: #fff6dc;
   border: 1px solid none;
   border-radius: 25px;
   padding: 20px;
   height: fit-content;
+  margin: 30px;
 }
 
 .table-calendar {
@@ -206,4 +207,13 @@
   width: 50%;
   border: 3px solid green;
   padding: 10px;
+}
+
+/* ID */
+#calendar-all > *{
+  margin-inline: 20px;
+}
+
+#calendar-setting > *{
+  margin-top: 13.5px;
 }

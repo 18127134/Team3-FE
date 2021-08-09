@@ -3,7 +3,7 @@ import React from 'react';
 
 function Topseller() {
     return (
-        <div className="product-main-homepage d-flex flex-column">
+        <div className="product-top-seller d-flex flex-column">
             <div>
                 <h3 >TOP BÁN CHẠY</h3>
             </div>

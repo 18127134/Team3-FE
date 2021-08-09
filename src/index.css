@@ -21,3 +21,7 @@ h1{
   font-weight: bolder;
 }
 
+label{
+  font-weight: bold;
+  margin-top: 10px;
+}
