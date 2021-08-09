@@ -162,17 +162,23 @@
   height: fit-content;
 }
 
-.table {
+.table-calendar {
   margin: 0 auto 20px;
 }
 
 .today {
   color: rgb(255, 102, 102);
+  background-color: blue;
 }
 
 .in-prev-month,
 .in-next-month {
   opacity: 0.5;
+}
+
+.text-header{
+  color: #940505;
+  margin-bottom: 0.5cm;
 }
 
 /* Button in out */
@@ -181,10 +187,23 @@
   margin-block: 10px;
   width: 100%;
   background-color: #FD7878;
+  border: 1.5px solid red;
+  border-radius: 25px;
 }
 
 /* Button nav */
 .button_nav{
   border: 1.5px solid red;
   border-radius: 25px;
+}
+
+.calendar-content{
+  width: 50%;
+}
+
+.center-element {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
 }
