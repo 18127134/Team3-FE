@@ -22,7 +22,7 @@ function Calendarbook() {
 
     return (
         <div className="d-flex">
-            <div className="row align-items-end" >
+            <div className="row align-items-end" style={{ marginInline: "15px" }} >
                 <img src={nail300} style={{ width: "120%" }}
                     alt="nail" />
             </div>
