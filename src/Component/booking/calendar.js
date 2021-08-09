@@ -69,7 +69,7 @@ function Calendarbook() {
                         </div>
 
                         <div className="text-center" style={{ marginBottom: "20px" }}>
-                            <button style={{ width: "100%" }} type="submit" className="btn btn-danger">Xác nhận</button>
+                            <button style={{ width: "100%" }} type="submit" className="btn btn-danger">Đặt Lịch</button>
                         </div>
                     </div>
 
