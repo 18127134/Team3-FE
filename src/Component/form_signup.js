@@ -10,7 +10,7 @@ function Formsignup() {
         <div className="container d-flex flex-column justify-content-center" style={{ marginTop: "25px", width: "30%" }}>
 
             <form onSubmit={onSubmit} className="form-signup shadow p-3 mb-5 bg-body rounded">
-                <h1 className="text-center" style={{ color: "#940505", marginBottom: "0.5cm" }}>
+                <h1 className="text-center text-header" >
                     Đăng Ký Tài Khoản
                 </h1>
                 <div >
@@ -49,7 +49,7 @@ function Formsignup() {
                 </div>
 
                 <div>
-                    <button type="submit buttonio" >
+                    <button type="submit" className="buttonio" >
                         <b>Đăng ký</b>
                     </button>
                 </div>

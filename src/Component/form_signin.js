@@ -17,7 +17,7 @@ function Formsignin() {
             style={{ marginTop: "25px", width: "30%" }}>
 
             <form onSubmit={onSubmit} className="form-signup shadow p-3 mb-5 bg-body rounded">
-                <h1 className="text-center" style={{ color: "#940505", marginBottom: "0.5cm" }}>
+                <h1 className="text-center text-header" >
                     Đăng Nhập
                 </h1>
 
