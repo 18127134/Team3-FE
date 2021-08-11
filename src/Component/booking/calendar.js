@@ -5,9 +5,8 @@ import Topseller from '../topseller';
 import nail300 from '../../Picture/nail300.png'
 
 function Calendarbook() {
-
     const [date, setDate] = useState(new Date());
-    const [time, setTime] = useState("9h - 11h");
+    const [time, setTime] = useState();
     const [people, setPeople] = useState(1);
 
     const handleTime = event => setTime(event.target.value);
@@ -15,10 +14,9 @@ function Calendarbook() {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(date);
-        console.log(time);
-        console.log(people);
     }
+
+    const now = new Date();
 
     return (
         <div className="d-flex">
@@ -29,25 +27,25 @@ function Calendarbook() {
 
             <div className="container">
                 <h1 className="text-center text-header">Đặt Lịch</h1>
-                <form id="calendar-all" onSubmit={handleSubmit} className="d-flex justify-content-center">
-
+                <form id="calendar-all" onSubmit={handleSubmit} className="d-flex justify-content-center" >
                     <div>
                         <label>Anh/chị đi ngày nào?</label>
                         <Calendar
                             onChange={setDate}
                             value={date}
-                            minDate={new Date()}
+                            minDate={now}
                             maxDate={new Date(2021, 11, 31)}
                             required
                         />
                     </div>
                     <div id="calendar-setting">
                         <label>Khung giờ anh chị có thể đến?</label>
-                        <select onChange={handleTime} className="form-select">
-                            <option value="9h - 11h">9h - 11h</option>
-                            <option value="12h - 14h">12h - 14h</option>
-                            <option value="15h - 17h">15h - 17h</option>
-                            <option value="19h - 21h">19h - 21h</option>
+                        <select onChange={handleTime} className="form-select" required>
+                            <option value="">Chọn giờ...</option>
+                            {now.getHours() < 9 ? <option value="9h - 11h">9h - 11h</option> : <option value="9h - 11h" disabled>9h - 11h</option>}
+                            {now.getHours() < 12 ? <option value="12h - 14h">12h - 14h</option> : <option value="12h - 14h" disabled>12h - 14h</option>}
+                            {now.getHours() < 15 ? <option value="15h - 17h">15h - 17h</option> : <option value="15h - 17h" disabled>15h - 17h</option>}
+                            {now.getHours() < 19 ? <option value="19h - 21h">19h - 21h</option> : <option value="19h - 21h" disabled>19h - 21h</option>}
                         </select>
 
                         <label>Anh/chị đi cùng mấy người?</label>
