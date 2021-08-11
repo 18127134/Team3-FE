@@ -151,7 +151,7 @@
   padding: 1cm;
   height: fit-content;
   width: 23cm;
-  margin: 30px;
+  margin-inline: 10px;
 }
 
 .product-top-seller{
@@ -160,7 +160,7 @@
   border-radius: 25px;
   padding: 20px;
   height: fit-content;
-  margin: 30px;
+  margin-inline: 10px;
 }
 
 .table-calendar {
@@ -175,11 +175,6 @@
 .in-prev-month,
 .in-next-month {
   opacity: 0.5;
-}
-
-.text-header{
-  color: #940505;
-  margin-bottom: 0.5cm;
 }
 
 /* Button in out */
@@ -219,6 +214,7 @@
   background-color: #fff6dc;
   border-radius: 10px;
   border-width: 3px;
+  width: fit-content;
 }
 
 #calendar-setting > *{
