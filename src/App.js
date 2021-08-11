@@ -7,6 +7,7 @@ import Formsignin from './Component/form_signin';
 import Homepage from './Component/homepage';
 import React from 'react';
 import Calendarbook from './Component/booking/calendar';
+import Chooseservice from './Component/booking/chooseservice';
 
 import {
   BrowserRouter as Router,
@@ -34,7 +35,7 @@ function App() {
           <Calendarbook />
         </Route>
         <Route path="/booking/chooseservice">
-          <Calendarbook />
+          <Chooseservice />
         </Route>
       </Switch>
 
