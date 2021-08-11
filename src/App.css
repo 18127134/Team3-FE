@@ -218,6 +218,7 @@
   border: solid rosybrown;
   background-color: #fff6dc;
   border-radius: 10px;
+  border-width: 3px;
 }
 
 #calendar-setting > *{
