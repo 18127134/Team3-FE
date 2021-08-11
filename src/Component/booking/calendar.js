@@ -9,7 +9,7 @@ function Calendarbook() {
 
     // Use State
     const [date, setDate] = useState(new Date());
-    const [time, setTime] = useState();
+    const [time, setTime] = useState(null);
     const [people, setPeople] = useState(1);
     const history = useHistory();
 
@@ -67,7 +67,7 @@ function Calendarbook() {
                             <label>Xác nhận</label>
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Thời gian</span>
-                                <input type="text" className="form-control" value={`${time} ngày ${date.getDate()}/${date.getMonth() + 1} `} disabled />
+                                <input type="text" className="form-control" value={`${time} ngày ${date.getDate()} / ${date.getMonth() + 1} `} disabled />
                             </div>
                             <div className="input-group mb-3">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Số người</span>
@@ -76,7 +76,7 @@ function Calendarbook() {
 
                             <div className="text-center" style={{ marginBottom: "20px" }}>
 
-                                <button style={{ width: "100%" }} type="submit" className="btn btn-danger">Đặt Lịch</button>
+                                <button style={{ width: "100%" }} type="submit" className="btn btn-danger" > Đặt Lịch</button>
 
                             </div>
                         </div>
