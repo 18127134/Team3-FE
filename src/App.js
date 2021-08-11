@@ -31,7 +31,10 @@ function App() {
           <Formsignup />
         </Route>
         <Route path="/booking">
-          <Calendarbook/>
+          <Calendarbook />
+        </Route>
+        <Route path="/booking/chooseservice">
+          <Calendarbook />
         </Route>
       </Switch>
 
