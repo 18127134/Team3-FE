@@ -2,6 +2,7 @@ import nail from "../Picture/nail_1.png"
 import React from 'react';
 import Topseller from "./topseller";
 
+
 function Homepage() {
     return (
         <div className="d-flex"  >
