@@ -31,7 +31,7 @@ function App() {
         <Route path="/signup">
           <Formsignup />
         </Route>
-        <Route path="/booking">
+        <Route path="/booking" exact>
           <Calendarbook />
         </Route>
         <Route path="/booking/chooseservice">
