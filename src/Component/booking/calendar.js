@@ -33,7 +33,7 @@ function Calendarbook() {
             </div>
 
             <div>
-                <h1 className="text-center" style={{ color: "#B21736" }}>Đặt Lịch</h1>
+                <h1 className="text-center" style={{ color: "#FD7878" }}>Đặt Lịch</h1>
                 <div>
                     <form id="calendar-all" onSubmit={handleSubmit} className="d-flex" >
                         <div>
@@ -76,7 +76,7 @@ function Calendarbook() {
 
                             <div className="text-center" style={{ marginBottom: "20px" }}>
 
-                                <button style={{ width: "100%" }} type="submit" className="btn btn-danger" > Đặt Lịch</button>
+                                <button style={{ width: "100%", backgroundColor: "#FD7878" }} type="submit" className="btn btn-danger" > Đặt Lịch</button>
 
                             </div>
                         </div>

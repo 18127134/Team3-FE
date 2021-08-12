@@ -220,3 +220,7 @@
 #calendar-setting > *{
   margin-top: 13.5px;
 }
+
+#calendar-all label{
+  color: #FD7878;
+}
