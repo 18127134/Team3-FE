@@ -8,11 +8,9 @@ function Service(props) {
     const handleCheck = event => props.idchoose([event.target.checked, props.id]);
 
     return (
-        <div className="d-flex justify-content-between" >
+        <div className="d-flex justify-content-between">
             <div className="form-check">
-                <label className="form-check-label" style={{ marginTop: "0%" }}>
-                    {props.name}
-                </label>
+                <label className="form-check-label form-check-input-checked-color: red" style={{ marginTop: "0%" }}>  {props.name}</label>
                 <input className="form-check-input" name="my-check" type="checkbox" onChange={handleCheck} />
             </div>
             <p>
