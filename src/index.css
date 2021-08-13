@@ -17,16 +17,13 @@ input{
   border-radius: 25px;
 }
 
-h1{
+:is(h1, h2, h3, h4, h5, h6){
   font-weight: bolder;
+  color: #e24343;
 }
 
 label{
   font-weight: bold;
   margin-top: 10px;
   color: #c46262;
-}
-
-h1{
-  color: #e24343;
 }
