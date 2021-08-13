@@ -205,11 +205,11 @@
 }
 
 /* ID */
-#calendar-all > *{
+#container-border > *{
   margin-inline: 20px;
 }
 
-#calendar-all {
+#container-border {
   border: solid rosybrown;
   background-color: #fff6dc;
   border-radius: 10px;
@@ -221,6 +221,7 @@
   margin-top: 13.5px;
 }
 
-#calendar-all label{
-  color: #FD7878;
+.choose-service{
+  padding:20px;
+  margin-bottom: 20px;
 }
