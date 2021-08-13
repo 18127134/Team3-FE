@@ -75,9 +75,7 @@ function Calendarbook() {
                             </div>
 
                             <div className="text-center" style={{ marginBottom: "20px" }}>
-
-                                <button style={{ width: "100%", backgroundColor: "#FD7878" }} type="submit" className="btn btn-danger" > Đặt Lịch</button>
-
+                                <button style={{ width: "100%" }} type="submit" className="btn btn-danger" > Đặt Lịch</button>
                             </div>
                         </div>
                     </form>
