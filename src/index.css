@@ -24,4 +24,9 @@ h1{
 label{
   font-weight: bold;
   margin-top: 10px;
+  color: #c46262;
+}
+
+h1{
+  color: #e24343;
 }
