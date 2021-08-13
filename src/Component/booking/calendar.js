@@ -33,9 +33,9 @@ function Calendarbook() {
             </div>
 
             <div>
-                <h1 className="text-center" style={{ color: "#FD7878" }}>Đặt Lịch</h1>
+                <h1 className="text-center">Đặt Lịch</h1>
                 <div>
-                    <form id="calendar-all" onSubmit={handleSubmit} className="d-flex" >
+                    <form id="container-border" onSubmit={handleSubmit} className="d-flex" >
                         <div>
                             <label>Anh/chị đi ngày nào?</label>
                             <Calendar
