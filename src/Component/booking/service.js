@@ -14,7 +14,7 @@ function Service(props) {
                 <input className="form-check-input" name="my-check" type="checkbox" onChange={handleCheck} />
             </div>
             <p>
-                {props.price}
+                {props.price / 1000}k
             </p>
 
         </div>
