@@ -2,7 +2,7 @@ import React from "react";
 import Service from "./service";
 import nail1 from "../../Picture/nail_1.png"
 import Topseller from "../topseller";
-
+import { Link } from "react-router-dom"
 
 // Test list service
 const nail_service = [
@@ -162,7 +162,10 @@ function Chooseservice() {
                 </div>
 
                 <div className="text-center" style={{ marginBottom: "20px" }}>
-                    <button type="submit" className="btn btn-danger" > Đặt Lịch</button>
+                    <Link to="booking/information">
+                        <button type="submit" className="btn btn-danger" > Đặt Lịch</button>
+                    </Link>
+
                 </div>
             </div>
             <div className="align-self-top">
