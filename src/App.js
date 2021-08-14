@@ -8,11 +8,13 @@ import Homepage from './Component/homepage';
 import React from 'react';
 import Calendarbook from './Component/booking/calendar';
 import Chooseservice from './Component/booking/chooseservice';
+import Bookinginformation from './Component/booking/information';
+
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
 } from "react-router-dom";
 
 function App() {
@@ -37,10 +39,10 @@ function App() {
         <Route path="/booking/chooseservice">
           <Chooseservice />
         </Route>
+        <Route path="/booking/information">
+          <Bookinginformation />
+        </Route>
       </Switch>
-
-
-
       <Footer />
     </Router>
 
