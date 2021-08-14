@@ -22,6 +22,10 @@ function Calendarbook() {
         history.push("booking/chooseservice");
     }
 
+    const handleInvalid = e => {
+        console.log(e);
+    }
+
     // Variables
     const now = new Date();
 
@@ -48,7 +52,7 @@ function Calendarbook() {
                         </div>
                         <div id="calendar-setting">
                             <label>Khung giờ anh chị có thể đến?</label>
-                            <select onChange={handleTime} className="form-select" required>
+                            <select onChange={handleTime} className="form-select" onInvalid={handleInvalid} required>
                                 <option value="">Chọn giờ...</option>
                                 {now.getHours() < 9 ? <option value="9h - 11h">9h - 11h</option> : <option value="9h - 11h" disabled>9h - 11h</option>}
                                 {now.getHours() < 12 ? <option value="12h - 14h">12h - 14h</option> : <option value="12h - 14h" disabled>12h - 14h</option>}
