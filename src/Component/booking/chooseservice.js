@@ -165,7 +165,10 @@ function Chooseservice() {
                     <button type="submit" className="btn btn-danger" > Đặt Lịch</button>
                 </div>
             </div>
-            <Topseller />
+            <div className="align-self-top">
+                <Topseller />
+            </div>
+
         </div>
 
     )
