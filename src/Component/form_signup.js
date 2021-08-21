@@ -60,12 +60,6 @@ function Formsignup() {
                     </p>
                 </div>
             </form>
-
-
-
-
-
-
         </div>
     );
 }

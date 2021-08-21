@@ -48,7 +48,7 @@
 .text-header{
   position: relative;
   text-align: center;
-  color: white;
+  color: rgb(255, 102, 102);
 }
 
 
@@ -211,21 +211,23 @@
 
 #container-border {
   border: solid rosybrown;
-  background-color: #fff6dc;
+  background-color: #ffffff;
   border-radius: 10px;
-  border-width: 3px;
+  border-width: 2px;
   width: fit-content;
+  padding: 15px 5px;
+  margin-bottom: 20px;
 }
 
 #calendar-setting > *{
   margin-top: 13.5px;
 }
 
-.choose-service{
-  padding:20px;
-  margin-bottom: 20px;
-}
-
 .btn-danger{
   background-color: #FD7878;
+}
+
+.form-check label{
+  margin-top: 0%;
+margin-inline-start: 10px;
 }

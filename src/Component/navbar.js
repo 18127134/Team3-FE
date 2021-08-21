@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar() {
+function Navbar(props) {
+    console.log(props.status);
     return (
         <div className="container" style={{ marginLeft: "150px" }}>
             <div className="d-flex flex-row justify-content-evenly " style={{ fontSize: "10px", margin: "10px" }}>
@@ -24,16 +25,37 @@ function Navbar() {
                 <div className="">
                     <button type="button" className="btn-sm button_nav">Liên hệ <i className="bi bi-telephone-fill" /></button>
                 </div>
+
                 <div className="">
-                    <Link to="/signin">
-                        <button type="button" className="btn-sm button_nav">Đăng nhập <i className="bi bi-person-check-fill" /></button>
-                    </Link>
+                    {props.status === 1 ?
+                        <Link to="/signin">
+                            <button type="button" className="btn-sm button_nav">Đăng nhập <i className="bi bi-person-check-fill" /></button>
+                        </Link>
+                        :
+                        <Link to="/managementbooking">
+                            <button type="button" className="btn-sm button_nav">Quản lý lịch <i className="bi bi-calendar-check-fill" /></button>
+                        </Link>
+                    }
+
                 </div>
                 <div className="">
-                    <Link to="/signup">
-                        <button type="button" className="btn-sm button_nav">Đăng ký <i className="bi bi-person-plus-fill" /></button>
-                    </Link>
+
+
+                    {props.status === 1 ?
+                        <Link to="/signup">
+                            <button type="button" className="btn-sm button_nav">Đăng ký <i className="bi bi-person-plus-fill" /></button>
+                        </Link>
+                        :
+                        <Link to="/profile">
+                            <button type="button" className="btn-sm button_nav">Hathanh07 <i className="bi bi-person-plus-fill" /></button>
+                        </Link>
+                    }
                 </div>
+
+
+
+
+
 
             </div>
         </div>

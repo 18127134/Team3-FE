@@ -98,24 +98,32 @@ const nail_design = [
 ]
 
 // Main
-function Chooseservice() {
+function Chooseservice(props) {
     // Function
     function handleChoose(data) {
-        if (data[0]) itemcheck.push(data[1]);
+        const service = [...nail_service, ...nail_design];
+
+        if (data[0]) itemcheck.push(service.find(x => x.id === data[1]));
         else itemcheck.splice(itemcheck.indexOf(data[1]), 1);
+
     }
 
-    const itemcheck = [];
+    const handleClick = e => {
+
+    }
+
+    // Variables
+    const itemcheck = props.itemcheck;
 
     return (
         <div className="d-flex justify-content-between">
             <div className="row align-items-end">
-                <img src={nail1} class=" " alt="nail" />
+                <img src={nail1} alt="nail" />
             </div>
 
             <div>
                 <h1 className="text-center">Chọn Dịch Vụ</h1>
-                <div id="container-border" className="d-flex justify-content-between choose-service">
+                <div id="container-border" className="d-flex justify-content-between">
                     <div style={{ width: "250px" }}>
                         <h2 className="text-center">
                             Nail Service
@@ -143,7 +151,7 @@ function Chooseservice() {
                         </h2>
 
                         <div className="d-flex justify-content-between" >
-                            <h6 className="" style={{ marginTop: "0%" }}>TÊN DỊCH VỤ</h6>
+                            <h6 style={{ marginTop: "0%" }}>TÊN DỊCH VỤ</h6>
                             <h6>GIÁ TIỀN</h6>
                         </div>
 
@@ -162,8 +170,8 @@ function Chooseservice() {
                 </div>
 
                 <div className="text-center" style={{ marginBottom: "20px" }}>
-                    <Link to="booking/information">
-                        <button type="submit" className="btn btn-danger" > Đặt Lịch</button>
+                    <Link to="information">
+                        <button type="submit" className="btn btn-danger" onClick={handleClick} > Đặt Lịch</button>
                     </Link>
 
                 </div>

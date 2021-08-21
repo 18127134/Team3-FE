@@ -9,7 +9,8 @@ import React from 'react';
 import Calendarbook from './Component/booking/calendar';
 import Chooseservice from './Component/booking/chooseservice';
 import Bookinginformation from './Component/booking/information';
-
+import Payment from './Component/booking/payment';
+import Mngbooking from './Component/Mngbooking';
 
 import {
   BrowserRouter as Router,
@@ -17,12 +18,16 @@ import {
   Route
 } from "react-router-dom";
 
+
+
 function App() {
+
+  let itemcheck = [];
 
   return (
     <Router>
       <Header />
-      <Navbar />
+      <Navbar status={0} />
       <Switch>
         <Route path="/" exact>
           <Homepage />
@@ -37,11 +42,19 @@ function App() {
           <Calendarbook />
         </Route>
         <Route path="/booking/chooseservice">
-          <Chooseservice />
+          <Chooseservice itemcheck={itemcheck} />
         </Route>
         <Route path="/booking/information">
           <Bookinginformation />
         </Route>
+        <Route path="/booking/payment">
+          <Payment />
+        </Route>
+
+        <Route path="/managementbooking">
+          <Mngbooking />
+        </Route>
+
       </Switch>
       <Footer />
     </Router>
