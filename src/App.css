@@ -41,16 +41,15 @@
   }
 }
 
-.img-header{
+.img-header {
   width: 100%;
 }
 
-.text-header{
+.text-header {
   position: relative;
   text-align: center;
   color: rgb(255, 102, 102);
 }
-
 
 /* Bottom left text */
 .bottom-left {
@@ -88,63 +87,63 @@
   transform: translate(-50%, -50%);
 }
 
-.logo{
+.logo {
   width: 120px;
 }
 
-.input-group-text{
+.input-group-text {
   background-color: white;
 }
 
-.navbar{
+.navbar {
   width: 100%;
 }
 
-.bi-asterisk{
+.bi-asterisk {
   color: red;
 }
 
-.form-control{
+.form-control {
   border: 1px solid #ff9797;
   border-radius: 25px;
   border-right: red;
 }
 
-.btn-sm{
+.btn-sm {
   border: 1px solid #ff9797;
   border-radius: 25px;
   padding-inline: 20px;
-  background-color:  #F3CECE;
+  background-color: #f3cece;
   width: 4cm;
   color: #d63636;
 }
 
-.bi{
+.bi {
   color: orange;
 }
 
-.bi-asterisk{
+.bi-asterisk {
   color: red;
   font-size: 10px;
 }
 
-.footer{
+.footer {
   height: 200px;
-  background-color:#FF9797;
+  background-color: #ff9797;
   color: white;
 }
 
-.footer .bi{
+.footer .bi {
   color: #d63636;
 }
 
-.form-sinup{
+.form-sinup {
   color: #940505;
   border: 3px solid #ff9797;
   border-radius: 50px;
 }
 
-.content-main-homepage{
+.content-main-homepage {
   border: 1px solid none;
   border-radius: 50px;
   background-color: #fff6dc;
@@ -154,7 +153,7 @@
   margin-inline: 10px;
 }
 
-.product-top-seller{
+.product-top-seller {
   background-color: #fff6dc;
   border: 1px solid none;
   border-radius: 25px;
@@ -178,22 +177,22 @@
 }
 
 /* Button in out */
-.buttonio{
+.buttonio {
   color: #940505;
   margin-block: 10px;
   width: 100%;
-  background-color: #FD7878;
+  background-color: #fd7878;
   border: 1.5px solid red;
   border-radius: 25px;
 }
 
 /* Button nav */
-.button_nav{
+.button_nav {
   border: 1.5px solid red;
   border-radius: 25px;
 }
 
-.calendar-content{
+.calendar-content {
   width: 50%;
 }
 
@@ -205,7 +204,7 @@
 }
 
 /* ID */
-#container-border > *{
+#container-border > * {
   margin-inline: 20px;
 }
 
@@ -216,18 +215,32 @@
   border-width: 2px;
   width: fit-content;
   padding: 15px 5px;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
-#calendar-setting > *{
+#calendar-setting > * {
   margin-top: 13.5px;
 }
 
-.btn-danger{
-  background-color: #FD7878;
+.btn-danger {
+  background-color: #fd7878;
 }
 
-.form-check label{
+.form-check label {
   margin-top: 0%;
-margin-inline-start: 10px;
+  margin-inline-start: 10px;
+}
+
+/* Manager */
+.mng-navbar {
+  margin-top: 2.5cm;
+  margin-inline: 30px;
+}
+
+.mng-navbar > * {
+  margin-bottom: 30px;
+}
+
+#container-border .col-md-auto {
+  width: 800px;
 }
