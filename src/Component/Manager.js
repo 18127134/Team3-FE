@@ -6,6 +6,7 @@ import Footer from "./Customer/footer";
 import Mngnavbar from "./Manager/mngnavbar";
 import Mngbooked from "./Manager/mngcalendarbook";
 import Mngwarehouse from "./Manager/warehouse/mngwarehouse";
+import Mngposts from "./Manager/post/mngposts";
 
 function Mngpage() {
   return (
@@ -38,6 +39,13 @@ function Mngpage() {
                   <Mngbooked status={1} />
                   <Mngbooked status={0} />
                   <Mngbooked status={1} />
+                </div>
+              </Route>
+
+              <Route path="/mngposts">
+                <div className="col-md-auto">
+                  <h1>Quản Lý Bài Viết</h1>
+                  <Mngposts />
                 </div>
               </Route>
             </Switch>

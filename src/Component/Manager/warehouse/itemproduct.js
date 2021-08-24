@@ -9,7 +9,7 @@ function Itemproduct(props) {
         <td>200.000vnđ</td>
         <td style={{ width: "80px" }}>
           {props.update ? (
-            <input type="text" className="form-control" value={100} />
+            <input type="text" className="form-control" defaultValue={100} />
           ) : (
             100
           )}

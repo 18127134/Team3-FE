@@ -30,7 +30,7 @@ function Mngnavbar() {
         </div>
 
         <div>
-          <Link to="/">
+          <Link to="/mngposts">
             <button type="button" className="btn-sm button_nav">
               Thêm bài viết <i className="bi bi-newspaper" />
             </button>
