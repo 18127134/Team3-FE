@@ -4,7 +4,7 @@ import Customer from "./Component/Customer";
 import Manager from "./Component/Manager";
 
 function App() {
-  const type = 0;
+  const type = 1;
 
   return <Fragment>{type === 1 ? <Customer /> : <Manager />}</Fragment>;
 }
