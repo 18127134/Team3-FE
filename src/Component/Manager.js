@@ -7,7 +7,7 @@ import Mngnavbar from "./Manager/mngnavbar";
 import Mngbooked from "./Manager/mngcalendarbook";
 import Mngwarehouse from "./Manager/warehouse/mngwarehouse";
 import Mngposts from "./Manager/post/mngposts";
-import Mngservices from "./Manager/mngservice";
+import Mngservices from "./Manager/service/mngservice";
 
 function Mngpage() {
   return (
