@@ -3,8 +3,8 @@ import React, { Fragment } from "react";
 function Itempost() {
   return (
     <Fragment>
-      <div className="d-flex">
-        <div id="container-border" className="text-start">
+      <div className="row">
+        <div id="container-border" className="text-start col">
           <b>Review sơn móng tay Innisfree với bảng màu đẹp và đầy đủ nhất</b>
           <p>24/08/2021</p>
           <p>
@@ -14,14 +14,21 @@ function Itempost() {
           </p>
         </div>
 
-        <div style={{ marginTop: "20px" }}>
-          <button type="button" className="btn-sm">
-            Chỉnh Sửa
-          </button>
+        <div
+          className="col-md-auto"
+          style={{ marginTop: "20px", width: "auto" }}
+        >
+          <div>
+            <button type="button" className="btn-sm">
+              Chỉnh Sửa
+            </button>
+          </div>
 
-          <button type="button" className="btn-sm" style={{margin}}>
-            Xoá
-          </button>
+          <div className="mt-3">
+            <button type="button" className="btn-sm">
+              Xoá
+            </button>
+          </div>
         </div>
       </div>
     </Fragment>
