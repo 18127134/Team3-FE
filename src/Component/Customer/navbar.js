@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Navbar(props) {
-  console.log(props.status);
   return (
     <div className="container" style={{ marginLeft: "150px" }}>
       <div
