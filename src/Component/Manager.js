@@ -7,6 +7,7 @@ import Mngnavbar from "./Manager/mngnavbar";
 import Mngbooked from "./Manager/mngcalendarbook";
 import Mngwarehouse from "./Manager/warehouse/mngwarehouse";
 import Mngposts from "./Manager/post/mngposts";
+import Mngservices from "./Manager/mngservice";
 
 function Mngpage() {
   return (
@@ -46,6 +47,13 @@ function Mngpage() {
                 <div className="col-md-auto">
                   <h1>Quản Lý Bài Viết</h1>
                   <Mngposts />
+                </div>
+              </Route>
+
+              <Route path="/mngservices">
+                <div className="col-md-auto">
+                  <h1>Quản Lý Dịch Vụ</h1>
+                  <Mngservices />
                 </div>
               </Route>
             </Switch>

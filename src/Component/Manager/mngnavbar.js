@@ -38,9 +38,9 @@ function Mngnavbar() {
         </div>
 
         <div>
-          <Link to="/">
+          <Link to="/mngservices">
             <button type="button" className="btn-sm button_nav">
-              Sản phẩm <i className="bi bi-archive-fill" />
+              Dịch Vụ <i className="bi bi-archive-fill" />
             </button>
           </Link>
         </div>
