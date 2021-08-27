@@ -1,18 +1,46 @@
-import React from "react";
+// Import Modules
+import React, { Fragment, useContext } from "react";
+import { useHistory } from "react-router-dom";
+
+import { bookContext } from "../../context/bookContext";
+import { authContext } from "../../context/authContext";
+
+// Import Component
 import Serviceinfor from "../inforservice";
 import nail1 from "../../Picture/nail_1.png";
 import nail6 from "../../Picture/nail_6png.png";
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
 
+// Main func
 function Bookinginformation(props) {
+  // Context
+  const { getBook, totalPrice } = useContext(bookContext);
+  const { getUser } = useContext(authContext);
+
+  // Variables
+  let ttpri = 0;
+
+  let book = getBook();
+  let user = getUser();
+
+  // Router
+  const history = useHistory();
+
+  // Handle
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    totalPrice(ttpri * book.people);
+
+    history.push("/booking/payment");
+  };
+
+  // Render FE
   return (
     <Fragment>
       <div className="d-flex justify-content-between">
         <div className="row align-items-end" style={{ width: "350px" }}>
           <img src={nail1} alt="nail" style={{ width: "350px" }} />
         </div>
-        <div style={{ width: "600px" }}>
+        <form onSubmit={handleSubmit} style={{ width: "600px" }}>
           <h1 className="text-center">Thông Tin Lịch Đặt</h1>
           <div className="d-flex justify-content-between">
             <div>
@@ -23,25 +51,29 @@ function Bookinginformation(props) {
                   <div>
                     <h6>Họ Và Tên</h6>
 
-                    <p className="text-center">Nguyễn Hà Thành</p>
+                    <p className="text-center">{user.name}</p>
                   </div>
 
                   <div>
                     <h6>Số Điện Thoại</h6>
 
-                    <p className="text-center">0898669171</p>
+                    <p className="text-center">{user.phonenumber}</p>
                   </div>
 
                   <div>
                     <h6>Thời Gian</h6>
 
-                    <p className="text-center">9h - 12 giờ, ngày 14/08</p>
+                    <p className="text-center">{`${
+                      book.time
+                    }, ngày ${book.date.getDate()}/${
+                      book.date.getMonth() + 1
+                    }/${book.date.getFullYear()} `}</p>
                   </div>
 
                   <div>
                     <h6>Số Người</h6>
 
-                    <p className="text-center">1 người</p>
+                    <p className="text-center">{book.people}</p>
                   </div>
                 </div>
               </div>
@@ -54,30 +86,42 @@ function Bookinginformation(props) {
                 <div>
                   <div
                     className="d-flex justify-content-between"
-                    style={{ width: "200px" }}
+                    style={{ width: "250px" }}
                   >
                     <h6 style={{ marginTop: "0%" }}>Tên Dịch Vụ</h6>
                     <h6>Giá Tiền</h6>
                   </div>
 
-                  <Serviceinfor name={"Tráng gương"} price={90000} />
+                  {book.service.map((item, index) => {
+                    ttpri += item.price;
 
-                  <Serviceinfor name={"Sơn Gel"} price={50000} />
+                    return (
+                      <Serviceinfor
+                        key={index}
+                        name={item.name}
+                        price={item.price}
+                        VNĐ
+                      />
+                    );
+                  })}
+                </div>
 
-                  <Serviceinfor name={"Sơn Mắt Mèo"} price={90000} />
+                <div className="d-flex justify-content-between">
+                  <label>Tổng Tiền</label>
+                  <b className="mt-2">{ttpri * book.people}VNĐ</b>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="text-center" style={{ marginBottom: "20px" }}>
-            <Link to="payment">
+            <div>
               <button type="submit" className="btn btn-danger">
                 Xác Nhận
               </button>
-            </Link>
+            </div>
           </div>
-        </div>
+        </form>
         <div className="align-self-center">
           <img src={nail6} alt="nail" style={{ width: "300px" }} />
         </div>

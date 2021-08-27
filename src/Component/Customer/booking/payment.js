@@ -1,22 +1,37 @@
-import React, { Fragment, useState } from "react";
+// Import modules
+import React, { Fragment, useContext, useState } from "react";
+
 import nail300 from "../../Picture/nail300.png";
 import nail1 from "../../Picture/nail_1.png";
-import { Link } from "react-router-dom";
 
+import { bookContext } from "../../context/bookContext";
+import { authContext } from "../../context/authContext";
+
+// Main func
 function Payment() {
+  // Context
+  const { getUser } = useContext(authContext);
+  const { getBook, setPayment } = useContext(bookContext);
+
+  // Variables
   const momo = "https://sundaysea.com/wp-content/uploads/2019/07/logo-momo.png";
+  const user = getUser();
+  const book = getBook();
 
-  const [payment, setpayment] = useState(1);
-  // Function
+  // Local State
+  const [pment, setPment] = useState("offline");
 
+  // Handle
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(payment);
+    setPayment(pment);
   };
 
   const hanldeChange = (e) => {
-    setpayment(Number(e.target.value));
+    setPment(e.target.value);
   };
+
+  // Render FE
   return (
     <Fragment>
       <div className="d-flex justify-content-between">
@@ -31,12 +46,12 @@ function Payment() {
             <h4>Thông tin chung</h4>
 
             <label>Họ tên:</label>
-            <span>Nguyễn Hà Thành</span>
+            <span>{user.name}</span>
 
             <br />
 
             <label>Tổng tiền: </label>
-            <span>230k</span>
+            <span>{book.totalPrice}VNĐ</span>
 
             <br />
             <br />
@@ -46,9 +61,9 @@ function Payment() {
               <input
                 className="form-check-input"
                 type="radio"
-                name="payment"
+                name="pment"
                 id="flexRadioDefault1"
-                value="1"
+                value="offline"
                 onChange={hanldeChange}
                 defaultChecked
               />
@@ -60,9 +75,9 @@ function Payment() {
               <input
                 className="form-check-input"
                 type="radio"
-                name="payment"
+                name="pment"
                 id="flexRadioDefault2"
-                value="2"
+                value="online"
                 onChange={hanldeChange}
               />
               <label className="form-check-label">Thanh Toán Online</label>
@@ -74,11 +89,9 @@ function Payment() {
           </div>
 
           <div className="text-center" style={{ marginBottom: "20px" }}>
-            <Link to="../managementbooking">
-              <button type="submit" className="btn btn-danger">
-                Xác Nhận
-              </button>
-            </Link>
+            <button type="submit" className="btn btn-danger">
+              Xác Nhận
+            </button>
           </div>
         </form>
 

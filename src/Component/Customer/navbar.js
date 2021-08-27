@@ -1,7 +1,17 @@
-import React from "react";
+// Import module
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
-function Navbar(props) {
+import { authContext } from "../context/authContext";
+
+// Main func
+function Navbar() {
+  // Context
+  const {
+    authState: { isAuthenticated, user },
+    logoutUser,
+  } = useContext(authContext);
+
   return (
     <div className="container" style={{ marginLeft: "150px" }}>
       <div
@@ -48,7 +58,7 @@ function Navbar(props) {
         </div>
 
         <div className="">
-          {props.status === 1 ? (
+          {!isAuthenticated ? (
             <Link to="/signin">
               <button type="button" className="btn-sm button_nav">
                 Đăng nhập <i className="bi bi-person-check-fill" />
@@ -63,18 +73,23 @@ function Navbar(props) {
           )}
         </div>
         <div className="">
-          {props.status === 1 ? (
+          {!isAuthenticated ? (
             <Link to="/signup">
               <button type="button" className="btn-sm button_nav">
                 Đăng ký <i className="bi bi-person-plus-fill" />
               </button>
             </Link>
           ) : (
-            <Link to="/profile">
-              <button type="button" className="btn-sm button_nav">
-                Hathanh07 <i className="bi bi-person-plus-fill" />
+            <div>
+              <button
+                type="button"
+                onClick={logoutUser}
+                className="btn-sm button_nav"
+              >
+                {user.username}
+                <i className="bi bi-person-plus-fill" />
               </button>
-            </Link>
+            </div>
           )}
         </div>
       </div>

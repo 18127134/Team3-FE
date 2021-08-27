@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useState, useContext } from "react";
 import { authContext } from "../context/authContext";
 
@@ -7,11 +7,16 @@ function Formsignin() {
   // Context
   const { loginUser } = useContext(authContext);
 
-  // State
+  // Local State
   const [loginForm, setLoginForm] = useState({
     username: "",
     password: "",
   });
+
+  const [validate, setValidate] = useState(true);
+
+  // Router
+  const history = useHistory();
 
   // Func handle
   const onSubmit = async (event) => {
@@ -21,13 +26,22 @@ function Formsignin() {
       const loginData = await loginUser(loginForm);
 
       console.log(loginData);
+      if (loginData.success) {
+        setValidate(true);
+        history.go(0);
+      } else {
+        setValidate(false);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   const onChangeLoginForm = (event) =>
-    setLoginForm({ ...loginForm, [event.target.name]: event.target.value });
+    setLoginForm({
+      ...loginForm,
+      [event.target.name]: event.target.value.trim(),
+    });
 
   // Render FE
   return (
@@ -70,6 +84,14 @@ function Formsignin() {
             />
           </div>
         </div>
+
+        {!validate ? (
+          <div className="text-center">
+            <label>Nhập sai Username hoặc Password</label>
+          </div>
+        ) : (
+          ""
+        )}
 
         <div>
           <button type="submit" className="buttonio">

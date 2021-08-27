@@ -1,8 +1,11 @@
-import React from "react";
+// Import module
+import React, { useContext } from "react";
+
 import Service from "./service";
 import nail1 from "../../Picture/nail_1.png";
 import Topseller from "../topseller";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { bookContext } from "../../context/bookContext";
 
 // Test list service
 const nail_service = [
@@ -96,9 +99,15 @@ const nail_design = [
   },
 ];
 
-// Main
-function Chooseservice(props) {
-  // Function
+// Main func
+function Chooseservice() {
+  // Router
+  const history = useHistory();
+
+  // Context
+  const { chooseService } = useContext(bookContext);
+
+  // Handle
   function handleChoose(data) {
     const service = [...nail_service, ...nail_design];
 
@@ -106,10 +115,16 @@ function Chooseservice(props) {
     else itemcheck.splice(itemcheck.indexOf(data[1]), 1);
   }
 
-  const handleClick = (e) => {};
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    chooseService(itemcheck);
+
+    history.push("/booking/information");
+  };
 
   // Variables
-  const itemcheck = props.itemcheck;
+  const itemcheck = [];
 
   return (
     <div className="d-flex justify-content-between">
@@ -117,7 +132,7 @@ function Chooseservice(props) {
         <img src={nail1} alt="nail" />
       </div>
 
-      <div>
+      <form onSubmit={handleSubmit}>
         <h1 className="text-center">Chọn Dịch Vụ</h1>
         <div id="container-border" className="d-flex justify-content-between">
           <div style={{ width: "250px" }}>
@@ -164,18 +179,12 @@ function Chooseservice(props) {
         </div>
 
         <div className="text-center" style={{ marginBottom: "20px" }}>
-          <Link to="information">
-            <button
-              type="submit"
-              className="btn btn-danger"
-              onClick={handleClick}
-            >
-              {" "}
-              Đặt Lịch
-            </button>
-          </Link>
+          <button type="submit" className="btn btn-danger">
+            {" "}
+            Đặt Lịch
+          </button>
         </div>
-      </div>
+      </form>
       <div className="align-self-top">
         <Topseller />
       </div>

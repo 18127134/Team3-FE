@@ -1,47 +1,93 @@
 // Import module
+import React, { Fragment, useContext } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
 import Header from "./Customer/header";
 import Navbar from "./Customer/navbar";
 import Formsignup from "./Customer/form_signup";
 import Footer from "./Customer/footer";
 import Formsignin from "./Customer/form_signin";
 import Homepage from "./Customer/homepage";
-import React, { Fragment } from "react";
 import Calendarbook from "./Customer/booking/calendar";
 import Chooseservice from "./Customer/booking/chooseservice";
 import Bookinginformation from "./Customer/booking/information";
 import Payment from "./Customer/booking/payment";
 import Mngbooking from "./Customer/mngbooking/Mngbooking";
-import AuthContextProvider from "./context/authContext";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { authContext } from "./context/authContext";
+import BookContextProvider from "./context/bookContext";
+
+// Main func
 function Customer() {
-  let itemcheck = [];
+  // Variables
+  let loading;
 
+  let bodyIn, bodyUp, booking;
+
+  // Context
+  const {
+    authState: { isAuthenticated, authLoading },
+  } = useContext(authContext);
+
+  // Redirect Booking & Sign In & Sign Up
+  if (authLoading)
+    loading = (
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border text-info " role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    );
+  else if (isAuthenticated) {
+    bodyIn = <Redirect to="/" />;
+    bodyUp = <Redirect to="/" />;
+    booking = <Calendarbook />;
+  } else {
+    bodyUp = <Formsignup />;
+    bodyIn = <Formsignin />;
+    booking = <Redirect to="/signin" />;
+  }
+
+  // Render FE
   return (
     <Fragment>
-      <AuthContextProvider>
+      <BookContextProvider>
+        {" "}
         <Router>
           <Header />
+
           <Navbar status={1} />
+
           <Switch>
             <Route path="/" exact>
               <Homepage />
             </Route>
-            <Route path="/signin">
-              <Formsignin />
+
+            <Route path="/signin" exact>
+              {!loading ? bodyIn : loading}
             </Route>
-            <Route path="/signup">
-              <Formsignup />
+
+            <Route path="/signup" exact>
+              {!loading ? bodyUp : loading}
             </Route>
+
             <Route path="/booking" exact>
-              <Calendarbook />
+              {!loading ? booking : loading}
             </Route>
+
             <Route path="/booking/chooseservice">
-              <Chooseservice itemcheck={itemcheck} />
+              <Chooseservice />
             </Route>
+
             <Route path="/booking/information">
               <Bookinginformation />
             </Route>
+
             <Route path="/booking/payment">
               <Payment />
             </Route>
@@ -50,9 +96,10 @@ function Customer() {
               <Mngbooking />
             </Route>
           </Switch>
+
           <Footer />
         </Router>
-      </AuthContextProvider>
+      </BookContextProvider>
     </Fragment>
   );
 }

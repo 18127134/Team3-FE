@@ -1,7 +1,11 @@
+// Import modules
 import nail from "../Picture/nail_1.png";
 import React from "react";
 import Topseller from "./topseller";
 
+import { Link } from "react-router-dom";
+
+// Main func
 function Homepage() {
   return (
     <div className="d-flex">
@@ -9,7 +13,7 @@ function Homepage() {
         <img src={nail} alt="nail" />
       </div>
 
-      <div className="content-main-homepage ">
+      <div className="content-main-homepage m-4">
         <div>
           <h3
             style={{
@@ -41,6 +45,14 @@ function Homepage() {
           </p>
 
           <p>Juneca Nail - đúng như tên gọi, theo đuổi tiêu chí làm đẹp..</p>
+        </div>
+
+        <div className="text-center">
+          <Link to="/booking">
+            <button type="button" className="btn-sm button_nav">
+              Đặt Lịch Ngay
+            </button>
+          </Link>
         </div>
       </div>
       <Topseller />
