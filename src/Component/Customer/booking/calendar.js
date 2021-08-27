@@ -63,32 +63,66 @@ function Calendarbook() {
               <label>Khung giờ anh chị có thể đến?</label>
               <select onChange={handleTime} className="form-select" required>
                 <option value="">Chọn giờ...</option>
-                {now.getHours() < 9 ? (
-                  <option Value="9h - 11h">9h - 11h</option>
-                ) : (
-                  <option value="9h - 11h">9h - 11h</option>
-                )}
-                {now.getHours() < 12 ? (
-                  <option value="12h - 14h">12h - 14h</option>
-                ) : (
-                  <option value="12h - 14h" disabled>
-                    12h - 14h
-                  </option>
-                )}
-                {now.getHours() < 15 ? (
-                  <option value="15h - 17h">15h - 17h</option>
-                ) : (
-                  <option value="15h - 17h" disabled>
-                    15h - 17h
-                  </option>
-                )}
-                {now.getHours() < 19 ? (
-                  <option value="19h - 21h">19h - 21h</option>
-                ) : (
-                  <option value="19h - 21h" disabled>
-                    19h - 21h
-                  </option>
-                )}
+                <option
+                  value="9h - 11h"
+                  disabled={
+                    date.getDate() === now.getDate() && now.getHours() >= 9
+                      ? true
+                      : ""
+                  }
+                >
+                  9h - 11h
+                </option>
+                <option
+                  value="11h - 13h"
+                  disabled={
+                    date.getDate() === now.getDate() && now.getHours() >= 11
+                      ? true
+                      : ""
+                  }
+                >
+                  11h - 13h
+                </option>
+                <option
+                  value="13h - 15h"
+                  disabled={
+                    date.getDate() === now.getDate() && now.getHours() >= 13
+                      ? true
+                      : ""
+                  }
+                >
+                  13h - 15h
+                </option>
+                <option
+                  value="15h - 17h"
+                  disabled={
+                    date.getDate() === now.getDate() && now.getHours() >= 15
+                      ? true
+                      : ""
+                  }
+                >
+                  15h - 17h
+                </option>
+                <option
+                  value="17h - 19h"
+                  disabled={
+                    date.getDate() === now.getDate() && now.getHours() >= 17
+                      ? true
+                      : ""
+                  }
+                >
+                  17h - 19h
+                </option>
+                <option
+                  value="19h - 21h"
+                  disabled={
+                    date.getDate() === now.getDate() && now.getHours() >= 19
+                      ? true
+                      : ""
+                  }
+                >
+                  19h - 21h
+                </option>
               </select>
 
               <label>Anh/chị đi cùng mấy người?</label>
@@ -96,7 +130,6 @@ function Calendarbook() {
                 <option value="1">Đi một mình ạ</option>
                 <option value="2">Đi hai mình</option>
                 <option value="3">Bộ ba</option>
-                <option value="4">Nguyên team đi vào hết</option>
               </select>
 
               <label>Xác nhận</label>

@@ -11,7 +11,7 @@ import { authContext } from "../../context/authContext";
 function Payment() {
   // Context
   const { getUser } = useContext(authContext);
-  const { getBook, setPayment } = useContext(bookContext);
+  const { getBook, setPayment, postBooking } = useContext(bookContext);
 
   // Variables
   const momo = "https://sundaysea.com/wp-content/uploads/2019/07/logo-momo.png";
@@ -22,9 +22,15 @@ function Payment() {
   const [pment, setPment] = useState("offline");
 
   // Handle
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setPayment(pment);
+    setPayment({ payment: pment, username: user.username });
+
+    try {
+      await postBooking();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const hanldeChange = (e) => {

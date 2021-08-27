@@ -1,9 +1,11 @@
 // Import modules
+import axios from "axios";
 import React, { createContext, useReducer } from "react";
 import { bookReducer } from "../reducers/bookReducer";
 
 // Import Constant
 import {
+  apiUrl,
   CHOOSE_DATE_BOOKING,
   CHOOSE_SERVICES_BOOKING,
   SET_PAYMENT,
@@ -24,7 +26,7 @@ const BookContextProvider = ({ children }) => {
     service: [],
     totalPrice: 0,
 
-    payment: null,
+    payment: "offline",
   });
 
   // Choose Date
@@ -55,11 +57,18 @@ const BookContextProvider = ({ children }) => {
   };
 
   // Set Payment
-  const setPayment = (payment) => {
+  const setPayment = (data) => {
     dispatch({
       type: SET_PAYMENT,
-      payload: payment,
+      payload: data,
     });
+  };
+
+  // Post Booking
+  const postBooking = async () => {
+    const respond = await axios.post(`${apiUrl}/booking`, bookState);
+
+    console.log(respond);
   };
 
   // Context data
@@ -69,6 +78,7 @@ const BookContextProvider = ({ children }) => {
     getBook,
     chooseDate,
     chooseService,
+    postBooking,
   };
 
   // Return provider

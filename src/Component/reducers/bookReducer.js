@@ -10,7 +10,7 @@ import {
 export const bookReducer = (state, action) => {
   const {
     type,
-    payload: { date, people, time },
+    payload: { date, people, time, payment, username },
   } = action;
 
   switch (type) {
@@ -37,7 +37,9 @@ export const bookReducer = (state, action) => {
     case SET_PAYMENT:
       return {
         ...state,
-        payment: action.payload,
+        payment,
+        username: username,
+        status: payment === "offline" ? 0 : 1,
       };
 
     default:
