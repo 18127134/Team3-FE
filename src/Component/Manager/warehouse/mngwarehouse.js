@@ -8,7 +8,7 @@ function Mngwarehouse() {
   return (
     <Fragment>
       <div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">STT</th>

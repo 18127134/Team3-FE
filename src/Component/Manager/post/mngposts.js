@@ -19,7 +19,7 @@ function Mngposts() {
           <div
             className="modal fade"
             id="addposts"
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="addpostsLabel"
             aria-hidden="true"
           >
@@ -43,7 +43,7 @@ function Mngposts() {
 
                   <div>
                     <label>Nội Dung</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea className="form-control" rows="3"></textarea>
                   </div>
                 </div>
                 <div className="modal-footer">

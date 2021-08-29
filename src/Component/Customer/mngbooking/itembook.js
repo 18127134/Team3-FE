@@ -1,6 +1,6 @@
 // Import modules
 import React, { Fragment, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+
 import { bookContext } from "../../context/bookContext";
 import { authContext } from "../../context/authContext";
 
@@ -11,13 +11,10 @@ function Itembook(props) {
   const service = props.service;
 
   // Context
-  const { deleteBooking, getAllBooking } = useContext(bookContext);
+  const { deleteBooking, getAllBooking, postPayment } = useContext(bookContext);
   const {
     authState: { user },
   } = useContext(authContext);
-
-  // Router
-  const history = useHistory();
 
   // Local State
   const [detail, setDetail] = useState(false);
@@ -36,6 +33,12 @@ function Itembook(props) {
     }
   };
 
+  const handlePayment = async () => {
+    const resPayment = await postPayment(props.booking);
+
+    await window.location.replace(resPayment.payUrl);
+  };
+
   // Mapping
   let detail_service = (
     <table className="table">
@@ -51,9 +54,9 @@ function Itembook(props) {
         {Object.keys(service).map((item, index) => (
           <tr key={index}>
             <th scope="row">{index + 1}</th>
-            <td>{service[index].name}</td>
-            <td>Otto</td>
-            <td>{service[index].price}vnđ/Người</td>
+            <td>{service[index].nameService}</td>
+            <td>{service[index].typeService}</td>
+            <td>{service[index].priceService}vnđ/Người</td>
           </tr>
         ))}
         <tr>
@@ -78,8 +81,9 @@ function Itembook(props) {
               type="button"
               onClick={handleClickCancel}
               className="btn btn-danger"
+              disabled={props.sttBooking ? true : ""}
             >
-              Huỷ
+              {props.sttBooking ? "Đã hoàn tất" : "Huỷ"}
             </button>
           </div>
         </div>
@@ -113,7 +117,14 @@ function Itembook(props) {
               style={{ width: "200px" }}
             />
           ) : (
-            ""
+            <button
+              type="button"
+              className="btn btn-success"
+              onClick={handlePayment}
+              disabled={props.payment === "offline" ? true : ""}
+            >
+              Thanh toán ngay
+            </button>
           )}
         </div>
       </div>

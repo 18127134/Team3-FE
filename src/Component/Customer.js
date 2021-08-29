@@ -20,7 +20,6 @@ import Payment from "./Customer/booking/payment";
 import Mngbooking from "./Customer/mngbooking/Mngbooking";
 
 import { authContext } from "./context/authContext";
-import BookContextProvider from "./context/bookContext";
 
 // Main func
 function Customer() {
@@ -59,50 +58,47 @@ function Customer() {
   // Render FE
   return (
     <Fragment>
-      <BookContextProvider>
-        {" "}
-        <Router>
-          <Header />
+      <Router>
+        <Header />
 
-          <Navbar status={1} />
+        <Navbar status={1} />
 
-          <Switch>
-            <Route path="/" exact>
-              <Homepage />
-            </Route>
+        <Switch>
+          <Route path="/" exact>
+            <Homepage />
+          </Route>
 
-            <Route path="/signin" exact>
-              {!loading ? bodyIn : loading}
-            </Route>
+          <Route path="/signin" exact>
+            {!loading ? bodyIn : loading}
+          </Route>
 
-            <Route path="/signup" exact>
-              {!loading ? bodyUp : loading}
-            </Route>
+          <Route path="/signup" exact>
+            {!loading ? bodyUp : loading}
+          </Route>
 
-            <Route path="/booking" exact>
-              {!loading ? booking : loading}
-            </Route>
+          <Route path="/booking" exact>
+            {!loading ? booking : loading}
+          </Route>
 
-            <Route path="/booking/chooseservice">
-              <Chooseservice />
-            </Route>
+          <Route path="/booking/chooseservice">
+            <Chooseservice />
+          </Route>
 
-            <Route path="/booking/information">
-              <Bookinginformation />
-            </Route>
+          <Route path="/booking/information">
+            <Bookinginformation />
+          </Route>
 
-            <Route path="/booking/payment">
-              <Payment />
-            </Route>
+          <Route path="/booking/payment">
+            <Payment />
+          </Route>
 
-            <Route path="/managementbooking">
-              <Mngbooking />
-            </Route>
-          </Switch>
+          <Route path="/managementbooking">
+            <Mngbooking />
+          </Route>
+        </Switch>
 
-          <Footer />
-        </Router>
-      </BookContextProvider>
+        <Footer />
+      </Router>
     </Fragment>
   );
 }

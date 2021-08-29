@@ -1,5 +1,5 @@
 // Import modules
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 
 import Itembook from "./itembook";
 import Topseller from "../topseller";
@@ -7,14 +7,44 @@ import nail1 from "../../Picture/nail_1.png";
 
 import { bookContext } from "../../context/bookContext";
 import { authContext } from "../../context/authContext";
+import { useHistory } from "react-router-dom";
 // Main func
 function Mngbooking() {
   // Context
-  const { listBooking } = useContext(bookContext);
+  const { listBooking, updatePaymentBooking } = useContext(bookContext);
   const {
     authState: { user },
   } = useContext(authContext);
 
+  // Router
+  const history = useHistory();
+
+  // Query search
+
+  const loadPrams = async () => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    if (params.message === undefined) return;
+    if (params.message !== null) {
+      try {
+        if (params.message === "Success") {
+          const response = await updatePaymentBooking(params.orderId);
+          console.log(response.data);
+        } else if (params.message !== "Success") console.log("Payment fail!");
+      } catch (error) {
+        console.log(error);
+      }
+
+      await history.push("/");
+    }
+  };
+
+  useEffect(async () => {
+    await loadPrams();
+  }, []);
+
+  console.log(listBooking);
   // Render FE
   return (
     <Fragment>
@@ -28,6 +58,7 @@ function Mngbooking() {
             return (
               <Itembook
                 key={index}
+                booking={listBooking[index]}
                 date={listBooking[index].date}
                 name={user.name}
                 people={listBooking[index].people}
@@ -37,6 +68,7 @@ function Mngbooking() {
                 sttPayment={listBooking[index].statusPayment}
                 id={listBooking[index]._id}
                 service={listBooking[index].service}
+                sttBooking={listBooking[index].statusBooking}
               />
             );
           })}

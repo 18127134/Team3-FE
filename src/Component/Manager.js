@@ -12,6 +12,7 @@ import Mngposts from "./Manager/post/mngposts";
 import Mngservices from "./Manager/service/mngservice";
 
 import { authContext } from "./context/authContext";
+import { bookContext } from "./context/bookContext";
 
 // Main func
 function Mngpage() {
@@ -19,6 +20,8 @@ function Mngpage() {
   const {
     authState: { user },
   } = useContext(authContext);
+
+  const { listBooking } = useContext(bookContext);
 
   // Check Admin or Customer
   if (user == null) return "";
@@ -52,9 +55,24 @@ function Mngpage() {
               <Route path="/mngbooked">
                 <div className="col-md-auto">
                   <h1>Xác Nhận Đặt Lịch</h1>
-                  <Mngbooked status={1} />
-                  <Mngbooked status={0} />
-                  <Mngbooked status={1} />
+                  {Object.keys(listBooking).map((item, index) => {
+                    return (
+                      <Mngbooked
+                        key={index}
+                        booking={listBooking[index]}
+                        date={listBooking[index].date}
+                        name={listBooking[index].username}
+                        people={listBooking[index].people}
+                        price={listBooking[index].totalPrice}
+                        payment={listBooking[index].typePayment}
+                        time={listBooking[index].time}
+                        sttPayment={listBooking[index].statusPayment}
+                        id={listBooking[index]._id}
+                        service={listBooking[index].service}
+                        sttBooking={listBooking[index].statusBooking}
+                      />
+                    );
+                  })}
                 </div>
               </Route>
 

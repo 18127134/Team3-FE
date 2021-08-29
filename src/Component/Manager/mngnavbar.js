@@ -1,8 +1,9 @@
 // Import modules
 import React, { Fragment, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { authContext } from "../context/authContext";
+import { bookContext } from "../context/bookContext";
 
 // Main func
 function Mngnavbar() {
@@ -12,6 +13,17 @@ function Mngnavbar() {
     authState: { user },
   } = useContext(authContext);
 
+  const { getAllBooking } = useContext(bookContext);
+
+  // Router
+  const history = useHistory();
+
+  // Handle
+  const handleConfirmService = async () => {
+    await getAllBooking();
+    await history.push("/mngbooked");
+  };
+  // Render FE
   return (
     <Fragment>
       <div className="mng-navbar col">
@@ -32,11 +44,15 @@ function Mngnavbar() {
         </div>
 
         <div>
-          <Link to="/mngbooked">
-            <button type="button" className="btn-sm button_nav">
+          <div>
+            <button
+              type="button"
+              className="btn-sm button_nav"
+              onClick={handleConfirmService}
+            >
               Xác nhận lịch <i className="bi bi-calendar-fill" />
             </button>
-          </Link>
+          </div>
         </div>
 
         <div>

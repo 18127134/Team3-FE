@@ -29,6 +29,8 @@ const BookContextProvider = ({ children }) => {
 
     typePayment: "offline",
     statusPayment: 0,
+
+    statusBooking: 0,
   });
 
   // Context
@@ -128,6 +130,20 @@ const BookContextProvider = ({ children }) => {
     }
   };
 
+  // Update payment booking
+  const updatePaymentBooking = async (id) => {
+    console.log(id);
+    try {
+      const response = await axios.put(
+        `${apiUrl}/booking/payment/response/${id}`
+      );
+      return response;
+    } catch (error) {
+      if (error.response.data) return error.response.data;
+      else return { success: false, message: error.message };
+    }
+  };
+
   // Context data
   const bookContextData = {
     setPayment,
@@ -140,6 +156,7 @@ const BookContextProvider = ({ children }) => {
     getAllBooking,
     listBooking,
     deleteBooking,
+    updatePaymentBooking,
   };
 
   // Return provider

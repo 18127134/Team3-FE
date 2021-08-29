@@ -28,6 +28,11 @@ function Navbar() {
     }
   };
 
+  const handleLogOut = async () => {
+    await history.push("/");
+    await logoutUser();
+  };
+
   // Render FE
   return (
     <div className="container" style={{ marginLeft: "150px" }}>
@@ -104,7 +109,7 @@ function Navbar() {
             <div>
               <button
                 type="button"
-                onClick={logoutUser}
+                onClick={handleLogOut}
                 className="btn-sm button_nav"
               >
                 {user.username}

@@ -1,17 +1,21 @@
 // Import modules
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { mngContext } from "../../context/mngContext";
 import Itemservice from "./mngitemservice";
 
 // Main func
 function Mngservices() {
+  // Context
+  const { insertService, listService } = useContext(mngContext);
+
   // Local state
   const [service, setService] = useState({
     nameService: "",
 
     priceService: 0,
 
-    typeService: "String",
+    typeService: "Nails Service",
   });
 
   // Router
@@ -19,10 +23,19 @@ function Mngservices() {
 
   // Handle
   const handleInput = (event) =>
-    setService({ ...service, [event.target.name]: event.target.value });
+    setService({
+      ...service,
+      [event.target.name]: event.target.value,
+    });
 
-  const handleConfirm = (event) => {
-    history.go(0);
+  const handleAdd = async () => {
+    try {
+      await insertService(service);
+
+      history.go(0);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Render FE
@@ -110,7 +123,7 @@ function Mngservices() {
                   <button
                     type="button"
                     className="btn btn-primary"
-                    onClick={handleConfirm}
+                    onClick={handleAdd}
                   >
                     Xác Nhận
                   </button>
@@ -124,16 +137,23 @@ function Mngservices() {
             <tr>
               <th scope="col">STT</th>
               <th scope="col">Dịch Vụ</th>
+              <th scope="col">Loại Dịch Vụ</th>
               <th scope="col">Giá Tiền</th>
               <th scope="col">Hành Động</th>
             </tr>
           </thead>
-          <tbody>
-            <Itemservice />
-            <Itemservice />
-            <Itemservice />
-            <Itemservice />
-          </tbody>
+          {Object.keys(listService).map((item, index) => {
+            return (
+              <Itemservice
+                key={index}
+                stt={index + 1}
+                name={listService[index].nameService}
+                price={listService[index].priceService}
+                type={listService[index].typeService}
+                id={listService[index]._id}
+              />
+            );
+          })}
         </table>
       </div>
     </Fragment>

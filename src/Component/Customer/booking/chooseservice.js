@@ -1,131 +1,75 @@
 // Import module
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 
 import Service from "./service";
 import nail1 from "../../Picture/nail_1.png";
 import Topseller from "../topseller";
 import { useHistory } from "react-router-dom";
 import { bookContext } from "../../context/bookContext";
-
-// Test list service
-const nail_service = [
-  {
-    id: "aa1",
-    name: "Nhặt da",
-    price: 20000,
-  },
-  {
-    id: "aa2",
-    name: "Sơn gel",
-    price: 80000,
-  },
-  {
-    id: "aa3",
-    name: "Sơn thạch",
-    price: 90000,
-  },
-  {
-    id: "aa4",
-    name: "Sơn lông",
-    price: 90000,
-  },
-  {
-    id: "aa5",
-    name: "Sơn mắt mèo",
-    price: 90000,
-  },
-  {
-    id: "aa6",
-    name: "Sơn giả bột",
-    price: 90000,
-  },
-  {
-    id: "aa7",
-    name: "Sơn theo trend",
-    price: 90000,
-  },
-  {
-    id: "aa8",
-    name: "Móng up",
-    price: 90000,
-  },
-  {
-    id: "aa9",
-    name: "Đắp gel",
-    price: 180000,
-  },
-  {
-    id: "aa10",
-    name: "Đắp bột",
-    price: 150000,
-  },
-];
-
-const nail_design = [
-  {
-    id: "bbb1",
-    name: "Tráng gương",
-    price: 10000,
-  },
-  {
-    id: "bbb2",
-    name: "Hoa nổi",
-    price: 10000,
-  },
-  {
-    id: "bbb3",
-    name: "Đá rắc",
-    price: 30000,
-  },
-  {
-    id: "bbb4",
-    name: "Vẽ gel theo trend",
-    price: 30000,
-  },
-  {
-    id: "bbb5",
-    name: "Design bột",
-    price: 35000,
-  },
-  {
-    id: "bbb6",
-    name: "Charm",
-    price: 50000,
-  },
-  {
-    id: "bbb7",
-    name: "Đính đá",
-    price: 5000,
-  },
-];
+import { mngContext } from "../../context/mngContext";
 
 // Main func
 function Chooseservice() {
+  // Context
+  const { listService } = useContext(mngContext);
+
+  const { chooseService } = useContext(bookContext);
+
   // Router
   const history = useHistory();
 
-  // Context
-  const { chooseService } = useContext(bookContext);
+  // Local State
+  const [itemCheck, setItemCheck] = useState([]);
 
-  // Handle
-  function handleChoose(data) {
-    const service = [...nail_service, ...nail_design];
+  // // Handle
+  // function handleChoose(data) {
+  //   const service = [...nail_service, ...nail_design];
 
-    if (data[0]) itemcheck.push(service.find((x) => x.id === data[1]));
-    else itemcheck.splice(itemcheck.indexOf(data[1]), 1);
-  }
+  //   if (data[0]) itemcheck.push(service.find((x) => x.id === data[1]));
+  //   else itemcheck.splice(itemcheck.indexOf(data[1]), 1);
+  // }
+
+  const handleChoose = (data) => {
+    let array = Object.keys(listService);
+
+    let index = array.find((x) => listService[`${x}`]._id === data[1]);
+
+    let service = (({
+      nameService,
+      priceService,
+      createDate,
+      typeService,
+      _id,
+    }) => ({ nameService, priceService, createDate, typeService, _id }))(
+      listService[index]
+    );
+
+    if (data[0]) {
+      var joined = itemCheck.concat(service);
+      setItemCheck(joined);
+    } else {
+      array = Object.keys(itemCheck);
+
+      index = array.find((x) => itemCheck[`${x}`]._id === data[1]);
+
+      let cpy = [...itemCheck];
+
+      cpy.splice(index, 1);
+
+      setItemCheck(cpy);
+    }
+    console.log(itemCheck);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    chooseService(itemcheck);
+    chooseService(itemCheck);
 
     history.push("/booking/information");
   };
 
-  // Variables
-  const itemcheck = [];
-
+  // Render FE
   return (
     <div className="d-flex justify-content-between">
       <div className="row align-items-end">
@@ -143,15 +87,17 @@ function Chooseservice() {
               </h6>
               <h6>GIÁ TIỀN</h6>
             </div>
-            {nail_service.map((item, index) => {
-              return (
+            {Object.keys(listService).map((item, index) => {
+              return listService[index].typeService === "Nails Service" ? (
                 <Service
                   key={index}
-                  id={item.id}
-                  name={item.name}
-                  price={item.price}
+                  id={listService[index]._id}
+                  name={listService[index].nameService}
+                  price={listService[index].priceService}
                   idchoose={handleChoose}
                 />
+              ) : (
+                ""
               );
             })}
           </div>
@@ -164,15 +110,17 @@ function Chooseservice() {
               <h6>GIÁ TIỀN</h6>
             </div>
 
-            {nail_design.map((item, index) => {
-              return (
+            {Object.keys(listService).map((item, index) => {
+              return listService[index].typeService === "Nails Design" ? (
                 <Service
                   key={index}
-                  id={item.id}
-                  name={item.name}
-                  price={item.price}
+                  id={listService[index]._id}
+                  name={listService[index].nameService}
+                  price={listService[index].priceService}
                   idchoose={handleChoose}
                 />
+              ) : (
+                ""
               );
             })}
           </div>

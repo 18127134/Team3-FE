@@ -93,13 +93,13 @@ function Bookinginformation(props) {
                   </div>
 
                   {book.service.map((item, index) => {
-                    ttpri += item.price;
+                    ttpri += item.priceService;
 
                     return (
                       <Serviceinfor
                         key={index}
-                        name={item.name}
-                        price={item.price}
+                        name={item.nameService}
+                        price={item.priceService}
                         VNĐ
                       />
                     );

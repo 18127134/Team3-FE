@@ -1,8 +1,68 @@
-import React, { Fragment } from "react";
+// Import modules
+import React, { Fragment, useContext, useState, useEffect } from "react";
+import { bookContext } from "../context/bookContext";
+import { mngContext } from "../context/mngContext";
 
+// Main func
 function Mngbooked(props) {
+  // Variables
   const dathanhtoan = "https://cdn.fast.vn/tmp/20201024113642-2.PNG";
 
+  // Context
+  const { confirmService } = useContext(mngContext);
+  const { getAllBooking } = useContext(bookContext);
+
+  // Local State
+  const [detail, setDetail] = useState(false);
+
+  // Router
+
+  // Handle
+  const handleClick = () => setDetail(!detail);
+
+  const handleConfirm = async () => {
+    try {
+      const res = await confirmService(props.id);
+
+      await getAllBooking();
+
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  // Mapping
+  let detail_service = (
+    <table className="table">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Tên Dịch Vụ</th>
+          <th scope="col">Loại Dịch Vụ</th>
+          <th scope="col">Giá tiền</th>
+        </tr>
+      </thead>
+      <tbody>
+        {Object.keys(props.service).map((item, index) => (
+          <tr key={index}>
+            <th scope="row">{index + 1}</th>
+            <td>{props.service[index].nameService}</td>
+            <td>{props.service[index].typeService}</td>
+            <td>{props.service[index].priceService}vnđ/Người</td>
+          </tr>
+        ))}
+        <tr>
+          <th scope="row"></th>
+          <td></td>
+          <td>TỔNG TIỀN: </td>
+          <td>{props.price}VNĐ</td>
+        </tr>
+      </tbody>
+    </table>
+  );
+
+  useEffect(() => console.log(props.service), []);
+  // Render FE
   return (
     <Fragment>
       <div
@@ -11,16 +71,17 @@ function Mngbooked(props) {
         style={{ height: "fit-content" }}
       >
         <div>
-          <label style={{ marginTop: "0%" }}>23/08</label>
-          <p style={{ fontSize: "130%" }}>Nguyễn Hà Thành</p>
+          <label style={{ marginTop: "0%" }}>{props.date.slice(0, 10)}</label>
+          <p style={{ fontSize: "130%" }}>{props.name}</p>
 
           <div className="text-center">
             <button
               type="button"
               className="btn btn-danger"
-              disabled={props.status === 1 ? "" : "true"}
+              onClick={handleConfirm}
+              disabled={props.sttBooking ? true : ""}
             >
-              Xác Nhận
+              {props.sttBooking ? "Đã hoàn tất" : "Xác nhận"}
             </button>
           </div>
         </div>
@@ -28,24 +89,26 @@ function Mngbooked(props) {
         <div>
           <div className="d-flex">
             <b>Số người: &nbsp;</b>
-            <p>1 người</p>
+            <p>{`${props.people} người`}</p>
           </div>
 
           <div className="d-flex">
             <b>Thời gian: &nbsp;</b>
-            <p>15h - 17h</p>
+            <p>{props.time}</p>
           </div>
 
           <div className="d-flex">
             <b>Hình thức thanh toán: &nbsp;</b>
-            <p>Online</p>
+            <p>{props.payment}</p>
           </div>
 
-          <a href="/#">Chi tiết dịch vụ</a>
+          <button type="button" className="btn btn-info" onClick={handleClick}>
+            Chi Tiết Dịch Vụ{" "}
+          </button>
         </div>
 
         <div className="" style={{ width: "200px" }}>
-          {props.status === 1 ? (
+          {props.sttPayment ? (
             <img
               src={dathanhtoan}
               alt="Dathanhtoan"
@@ -56,6 +119,18 @@ function Mngbooked(props) {
           )}
         </div>
       </div>
+
+      {detail ? (
+        <div
+          id="container-border"
+          className="d-flex justify-content-center"
+          style={{ width: "732.23px" }}
+        >
+          {detail_service}
+        </div>
+      ) : (
+        ""
+      )}
     </Fragment>
   );
 }
