@@ -1,14 +1,24 @@
-import React, { Fragment } from "react";
+// Import modules
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { authContext } from "../context/authContext";
+
+// Main func
 function Mngnavbar() {
+  // Context
+  const {
+    logoutUser,
+    authState: { user },
+  } = useContext(authContext);
+
   return (
     <Fragment>
       <div className="mng-navbar col">
         <div>
           <Link to="/">
             <button type="button" className="btn-sm button_nav">
-              dthao01 <i className="bi bi-person-fill" />
+              {user.username} <i className="bi bi-person-fill" />
             </button>
           </Link>
         </div>
@@ -51,6 +61,17 @@ function Mngnavbar() {
               Báo cáo <i className="bi bi-file-earmark-text-fill" />
             </button>
           </Link>
+        </div>
+
+        <div>
+          <button
+            type="button"
+            onClick={logoutUser}
+            className="btn-sm button_nav"
+          >
+            Đăng xuất
+            <i className="bi bi-person-plus-fill" />
+          </button>
         </div>
       </div>
     </Fragment>

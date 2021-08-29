@@ -6,13 +6,17 @@ import nail1 from "../../Picture/nail_1.png";
 
 import { bookContext } from "../../context/bookContext";
 import { authContext } from "../../context/authContext";
+import { useHistory } from "react-router-dom";
 
 // Main func
 function Payment() {
   // Context
   const { getUser } = useContext(authContext);
-  const { getBook, setPayment, postBooking } = useContext(bookContext);
+  const { getBook, setPayment, postBooking, postPayment, getAllBooking } =
+    useContext(bookContext);
 
+  // Router
+  const history = useHistory();
   // Variables
   const momo = "https://sundaysea.com/wp-content/uploads/2019/07/logo-momo.png";
   const user = getUser();
@@ -22,12 +26,27 @@ function Payment() {
   const [pment, setPment] = useState("offline");
 
   // Handle
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleClick = () =>
     setPayment({ payment: pment, username: user.username });
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
     try {
-      await postBooking();
+      const response = await postBooking();
+
+      const newBooking = response.newBooking;
+
+      if (newBooking.typePayment === "online") {
+        const resPayment = await postPayment(newBooking);
+
+        if (resPayment.errorCode === 0)
+          window.location.replace(resPayment.payUrl);
+        else console.log(resPayment.message);
+      } else {
+        await getAllBooking(user.username);
+        await history.push("/managementbooking");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +114,11 @@ function Payment() {
           </div>
 
           <div className="text-center" style={{ marginBottom: "20px" }}>
-            <button type="submit" className="btn btn-danger">
+            <button
+              type="submit"
+              className="btn btn-danger"
+              onClick={handleClick}
+            >
               Xác Nhận
             </button>
           </div>

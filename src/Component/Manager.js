@@ -1,6 +1,8 @@
-import React, { Fragment } from "react";
-import Mnginformation from "./Manager/mnginformation";
+// Import modlues
+import React, { Fragment, useContext } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Mnginformation from "./Manager/mnginformation";
 import Header from "./Customer/header";
 import Footer from "./Customer/footer";
 import Mngnavbar from "./Manager/mngnavbar";
@@ -9,7 +11,20 @@ import Mngwarehouse from "./Manager/warehouse/mngwarehouse";
 import Mngposts from "./Manager/post/mngposts";
 import Mngservices from "./Manager/service/mngservice";
 
+import { authContext } from "./context/authContext";
+
+// Main func
 function Mngpage() {
+  // Context
+  const {
+    authState: { user },
+  } = useContext(authContext);
+
+  // Check Admin or Customer
+  if (user == null) return "";
+  else if (user != null && user.username !== "admin") return "";
+
+  // Render FE
   return (
     <Fragment>
       <Router>

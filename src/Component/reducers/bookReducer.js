@@ -37,9 +37,8 @@ export const bookReducer = (state, action) => {
     case SET_PAYMENT:
       return {
         ...state,
-        payment,
+        typePayment: payment,
         username: username,
-        status: payment === "offline" ? 0 : 1,
       };
 
     default:

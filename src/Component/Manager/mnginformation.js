@@ -1,6 +1,14 @@
-import React, { Fragment } from "react";
+// Import modules
+import React, { Fragment, useContext } from "react";
 
+import { authContext } from "../context/authContext";
+// Main func
 function Mnginformation() {
+  // Context
+  const { getUser } = useContext(authContext);
+
+  const user = getUser();
+  // Render FE
   return (
     <Fragment>
       <h5 className="text-center">Thông Tin Quản Lý</h5>
@@ -12,8 +20,8 @@ function Mnginformation() {
       </div>
 
       <div className="d-flex justify-content-around">
-        <p>Nguyễn Đình Thảo</p>
-        <p>0917845908</p>
+        <p>{user.name}</p>
+        <p>{user.phonenumber}</p>
         <p>Quản lý trưởng</p>
       </div>
 

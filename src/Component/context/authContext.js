@@ -45,7 +45,7 @@ const AuthContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => loadUser(), []);
+  useEffect(async () => await loadUser(), []);
   // Register User
   const registerUser = async (userForm) => {
     try {

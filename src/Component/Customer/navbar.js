@@ -1,8 +1,9 @@
 // Import module
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { authContext } from "../context/authContext";
+import { bookContext } from "../context/bookContext";
 
 // Main func
 function Navbar() {
@@ -12,6 +13,22 @@ function Navbar() {
     logoutUser,
   } = useContext(authContext);
 
+  const { getAllBooking } = useContext(bookContext);
+
+  // Router
+  const history = useHistory();
+
+  // Handle
+  const handleClick = async () => {
+    try {
+      await getAllBooking(user.username);
+      await history.push("/managementbooking");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Render FE
   return (
     <div className="container" style={{ marginLeft: "150px" }}>
       <div
@@ -65,11 +82,15 @@ function Navbar() {
               </button>
             </Link>
           ) : (
-            <Link to="/managementbooking">
-              <button type="button" className="btn-sm button_nav">
+            <div>
+              <button
+                type="button"
+                onClick={handleClick}
+                className="btn-sm button_nav"
+              >
                 Quản lý lịch <i className="bi bi-calendar-check-fill" />
               </button>
-            </Link>
+            </div>
           )}
         </div>
         <div className="">

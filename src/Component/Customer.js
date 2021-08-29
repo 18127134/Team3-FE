@@ -31,8 +31,11 @@ function Customer() {
 
   // Context
   const {
-    authState: { isAuthenticated, authLoading },
+    authState: { isAuthenticated, authLoading, user },
   } = useContext(authContext);
+
+  // Check Admin or Customer
+  if (user != null && user.username === "admin") return "";
 
   // Redirect Booking & Sign In & Sign Up
   if (authLoading)

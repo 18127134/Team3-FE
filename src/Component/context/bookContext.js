@@ -1,7 +1,8 @@
 // Import modules
 import axios from "axios";
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 import { bookReducer } from "../reducers/bookReducer";
+import { authContext } from "./authContext";
 
 // Import Constant
 import {
@@ -26,8 +27,17 @@ const BookContextProvider = ({ children }) => {
     service: [],
     totalPrice: 0,
 
-    payment: "offline",
+    typePayment: "offline",
+    statusPayment: 0,
   });
+
+  // Context
+  const {
+    authState: { user },
+  } = useContext(authContext);
+
+  // State
+  const [listBooking, setListBooking] = useState([]);
 
   // Choose Date
   const chooseDate = (data) => {
@@ -66,9 +76,56 @@ const BookContextProvider = ({ children }) => {
 
   // Post Booking
   const postBooking = async () => {
-    const respond = await axios.post(`${apiUrl}/booking`, bookState);
+    try {
+      const response = await axios.post(`${apiUrl}/booking`, bookState);
+      return response.data;
+    } catch (error) {
+      if (error.response.data) return error.response.data;
+      else return { success: false, message: error.message };
+    }
+  };
 
-    console.log(respond);
+  // Post Payment
+  const postPayment = async (newBooking) => {
+    try {
+      const response = await axios.post(
+        `${apiUrl}/booking/payment`,
+        newBooking
+      );
+
+      return response.data;
+    } catch (error) {
+      if (error.response.data) return error.response.data;
+      else return { success: false, message: error.message };
+    }
+  };
+
+  // Get list booking
+  const getAllBooking = async (username) => {
+    try {
+      const response = await axios.post(`${apiUrl}/booking/getbook`, {
+        username: username,
+      });
+
+      setListBooking(response.data);
+      return response.data;
+    } catch (error) {
+      if (error.response.data) return error.response.data;
+      else return { success: false, message: error.message };
+    }
+  };
+
+  // Delete booking
+  const deleteBooking = async (id) => {
+    try {
+      const response = await axios.delete(
+        `${apiUrl}/booking/deletebook/${id}/${user.username}`
+      );
+      return response.data;
+    } catch (error) {
+      if (error.response.data) return error.response.data;
+      else return { success: false, message: error.message };
+    }
   };
 
   // Context data
@@ -79,6 +136,10 @@ const BookContextProvider = ({ children }) => {
     chooseDate,
     chooseService,
     postBooking,
+    postPayment,
+    getAllBooking,
+    listBooking,
+    deleteBooking,
   };
 
   // Return provider

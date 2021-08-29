@@ -1,7 +1,31 @@
-import React, { Fragment } from "react";
+// Import modules
+import React, { Fragment, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Itemservice from "./mngitemservice";
 
+// Main func
 function Mngservices() {
+  // Local state
+  const [service, setService] = useState({
+    nameService: "",
+
+    priceService: 0,
+
+    typeService: "String",
+  });
+
+  // Router
+  const history = useHistory();
+
+  // Handle
+  const handleInput = (event) =>
+    setService({ ...service, [event.target.name]: event.target.value });
+
+  const handleConfirm = (event) => {
+    history.go(0);
+  };
+
+  // Render FE
   return (
     <Fragment>
       <div>
@@ -14,10 +38,11 @@ function Mngservices() {
           >
             Thêm Dịch Vụ
           </button>
+
           <div
             className="modal fade"
             id="addposts"
-            tabindex="-1"
+            tabIndex="-1"
             aria-labelledby="addpostsLabel"
             aria-hidden="true"
           >
@@ -36,43 +61,57 @@ function Mngservices() {
                 <div className="modal-body">
                   <div>
                     <label>Tên Dịch Vụ</label>
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="nameService"
+                      onChange={handleInput}
+                    />
                   </div>
 
                   <div>
                     <label>Giá Tiền</label>
-                    <input type="text" class="form-control" />
+                    <input
+                      type="text"
+                      className="form-control"
+                      name="priceService"
+                      onChange={handleInput}
+                    />
                   </div>
 
                   <label>Kiểu Dịch Vụ</label>
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
+                      name="typeService"
+                      onChange={handleInput}
+                      value="Nails Service"
                       id="flexRadioDefault1"
+                      defaultChecked
                     />
-                    <b class="form-check-label" for="flexRadioDefault1">
-                      Nails Service
-                    </b>
+                    <b className="form-check-label">Nails Service</b>
                   </div>
 
-                  <div class="form-check">
+                  <div className="form-check">
                     <input
-                      class="form-check-input"
+                      className="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
+                      name="typeService"
+                      onChange={handleInput}
+                      value="Nails Design"
                       id="flexRadioDefault2"
-                      checked
                     />
-                    <b class="form-check-label" for="flexRadioDefault2">
-                      Nails Design
-                    </b>
+                    <b className="form-check-label">Nails Design</b>
                   </div>
                 </div>
 
                 <div className="modal-footer">
-                  <button type="button" className="btn btn-primary">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={handleConfirm}
+                  >
                     Xác Nhận
                   </button>
                 </div>
@@ -80,7 +119,7 @@ function Mngservices() {
             </div>
           </div>
         </div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">STT</th>
